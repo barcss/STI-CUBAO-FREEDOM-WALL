@@ -29,7 +29,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </div>
                 <div class="d-flex ms-4 mb-0">
                     <p class="m-0" style="font-size: 10px; padding: 0px">'. $row['comment_date'].' - </p>
-                    <p data-comment-id="'. $row['comment_id'].'" data-post-id="'. $row['post_id'].'" class="reply-comment primary-text p-0 m-0 ms-2" style="cursor: pointer; font-size: 9px">Reply <span class="  p-1" style="height: 10px; width: 10px; font-size: 9px">'. getPostReplyCount($row['post_id'], $row['comment_id']). '</span></p> 
+                    <p data-comment-id="'. $row['comment_id'].'" data-post-id="'. $row['post_id'].'" data-display-name="'. $accountDetails['display_name'] .'" class="reply-comment primary-text p-0 m-0 ms-2" style="cursor: pointer; font-size: 9px">Reply <span class="  p-1" style="height: 10px; width: 10px; font-size: 9px">'. getPostReplyCount($row['post_id'], $row['comment_id']). '</span></p> 
                 </div>
             </div>
                     <div id="reply-container-'.$row['comment_id'].'" class="w-100 d-none d-flex flex-column align-items-start justify-content-start ps-4 p-2">
