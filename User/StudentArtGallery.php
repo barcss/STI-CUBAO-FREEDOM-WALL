@@ -117,7 +117,6 @@ include('../User/Components/UserMetaData.php');
         })
 
         $('#art_photo').on('change', function() {
-            console.log("HI")
             var file = this.files[0]; //reference to the parent then get the first files value
             if (file) {
                 var reader = new FileReader(); //Object for reading Files, makes file output as pic
@@ -135,10 +134,22 @@ include('../User/Components/UserMetaData.php');
             e.preventDefault();
 
             let file = new FormData(this)
+            let img = file.get("art-photo")
+            let content = $('textarea[name="post_content"]').val();
+            
+            console.log(content)
+            if (!img || img.size === 0) {
+                alert("ADD IMAGE BRO")
+                return;
+            }
+
             $.ajax({
                 url: '../User/Handler/upload_picture.php',
                 type: 'POST',
-                data: file,
+                data: {
+                    file: file,
+                    content: content
+                },
                 contentType: false,
                 processData: false,
                 success: function() {
