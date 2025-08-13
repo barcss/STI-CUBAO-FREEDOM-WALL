@@ -11,15 +11,14 @@ $filter = isset($_GET['postFilter']) ? $_GET['postFilter'] : '';
 $htmlContent = '';
 $account_id = isset($_SESSION['account_id']) ? $_SESSION['account_id'] : 0;
 $rowCount = 0;
-
 if ($filter === '') {
-    $query = 'SELECT * FROM user_post WHERE is_hidden = ? ORDER BY post_id DESC LIMIT ?, ?';
+    $query = 'SELECT * FROM user_post WHERE is_hidden = ? AND photo_path IS NULL ORDER BY post_id DESC LIMIT ?, ?';
     $stmt = mysqli_prepare($conn_contents, $query);
-    mysqli_stmt_bind_param($stmt, 'iii', $defaultHiddenValue, $offset, $limit);
+    mysqli_stmt_bind_param($stmt, 'iii', $defaultHiddenValue,  $offset, $limit);
 } else {
-    $query = 'SELECT * FROM user_post WHERE is_hidden = ? AND post_chanel = ? ORDER BY post_id DESC LIMIT ?,?';
+    $query = 'SELECT * FROM user_post WHERE is_hidden = ? AND photo_path IS NULL AND post_chanel = ? ORDER BY post_id DESC LIMIT ?,?';
     $stmt = mysqli_prepare($conn_contents, $query);
-    mysqli_stmt_bind_param($stmt, 'isii', $defaultHiddenValue, $filter, $offset, $limit);
+    mysqli_stmt_bind_param($stmt, 'isii', $defaultHiddenValue , $filter, $offset, $limit);
 }
 
 mysqli_execute($stmt);
