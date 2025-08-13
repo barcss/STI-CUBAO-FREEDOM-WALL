@@ -3,9 +3,9 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
-    // if (!isset($_FILES['art_photo'])) {
-    //     die("No file uploaded or there was an upload error");
-    // }
+    if (!isset($_FILES['art_photo'])) {
+        die("No file uploaded or there was an upload error");
+    }
 
     include('../../Database/db_connect.php');
     echo 'nicekid';
@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fileExtension = strtolower(end($fileCmps));
     $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
     $chanel = 'art_gallery';
+    $true = 1;
 
     $uploadsFileDir = '../../User/Data/ArtGalleray_Uploaded_Img/';
     if (!is_dir($uploadsFileDir)) {
@@ -27,14 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $dest_path = $uploadsFileDir . $newFileName;
-
     if (move_uploaded_file($fileTmpPath, $dest_path)) {
-        $query = "INSERT INTO user_post (account_id, post_date, post_content, post_chanel) VALUES (?,?,?,?)";
+        $query = "INSERT INTO user_post (account_id, post_date, post_content, post_chanel, photo_path) VALUES (?,?,?,?,?)";
         $stmt = mysqli_prepare($conn_contents, $query);
-        mysqli_stmt_bind_param($stmt, 'isis', $account_id, $date, $dest_path, $chanel);
+        mysqli_stmt_bind_param($stmt, 'issss', $account_id, $date, $dest_path, $chanel, $true);
         if (mysqli_stmt_execute($stmt)) {
             echo 'File uploaded';
-            echo $account_id . ',' . $date . ',' . $newFileName . ',' . $chanel;
+            echo $account_id . ',' . $date . ',' . $dest_path . ',' . $chanel;
         }
     }
 }
