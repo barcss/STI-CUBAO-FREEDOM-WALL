@@ -2,7 +2,15 @@
 include('../User/Components/UserMetaData.php');
 
 ?>
+<head>
+    <style>
+        .img-preview {
+        object-fit: cover;
+        object-position: center center;   /* Spacing from text */
+    }
 
+    </style>
+</head>
 <body class="poppins-regular">
     <div class="container-fluid vh-100 d-flex p-0 m-0 row">
 
@@ -35,30 +43,29 @@ include('../User/Components/UserMetaData.php');
                     Share art works
                 </button>
 
-                <form action="#" method="POST">
+                <form id="upload_photo_form" action="#" method="POST">
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content  bg-light">
+                                <form method="post" action="../User/Handler/upload_picture.php" enctype="multipart/form-data">
                                 <div class="modal-body d-flex flex-column">
                                     <div class="d-flex justify-content-between mb-2 p-0 align-items-center">
                                         <p class="m-0 col-4">Create a post</p>
-                                        <select name="post_chanel" class="col-8 w-auto m-0 form-select form-select-sm">
-                                            <option value="random_message">Random Message</option>
-                                            <option value="rants">Rants</option>
-                                            <option value="confession">Confession</option>
-                                            <option value="questions">Questions</option>
-                                            <option value="lf_classmates">Looking For</option>
-                                            <option value="lost_and_found">Lost and Found</option>
-                                        </select>
                                     </div>
                                     <div>
-                                        <textarea name="post_content" class="bg-white w-100 shadow-sm p-1 border-0 rounded" rows="5" placeholder="Say something, <?php echo $_SESSION['display_name'] ?>... "></textarea>
+                                        <textarea name="post_content" class="bg-white w-100 shadow-sm p-1 border-0 rounded" rows="2" placeholder="Add some caption for this masterpiece, <?php echo $_SESSION['display_name'] ?>... "></textarea>
+                                        <div id="img-container" class="w-100 my-4 d-flex justify-content-center d-none" style="height: 30vh;">
+                                            <img id="img-preview" style="object-fit: cover; object-position: center center;"/>
+                                        </div>
+                                            <label for="art_photo" class="btn primary-color w-100 text-white">Upload Image</label>
+                                            <input hidden name="art_photo" id="art_photo" type="file" accept="image/*">
                                     </div>
                                 </div>
                                 <div class="modal-footer p-1">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="sumbit_post" class="btn btn-primary">Post</button>
+                                    <button type="submit" name="submit_post" class="btn btn-primary">Post</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -107,6 +114,37 @@ include('../User/Components/UserMetaData.php');
     <script>
         $('#userDashboard').on('click', ()=>{
             window.location.href = "../User/UserDashboard.php"
+        })
+
+        $('#art_photo').on('change', function() {
+            console.log("HI")
+            var file = this.files[0]; //reference to the parent then get the first files value
+            if (file) {
+                var reader = new FileReader(); //Object for reading Files, makes file output as pic
+                $('#img-container').removeClass('d-none').addClass('d-block')
+                console.log(file)
+                reader.onload = function(e) { 
+                    $('#img-preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(file)
+            }
+        })
+
+
+        $('#upload_photo_form').on('submit', function(e){
+            e.preventDefault();
+
+            let file = new FormData(this)
+            $.ajax({
+                url: '../User/Handler/upload_picture.php',
+                type: 'POST',
+                data: file,
+                contentType: false,
+                processData: false,
+                success: function() {
+                    console.log('succ')
+                }
+            })
         })
     </script>
 </body>
