@@ -4,9 +4,8 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (!isset($_FILES['art_photo'])) {
-        die("No file uploaded or there was an upload error");
+        die("No file uploaded");
     }
-
     include('../../Database/db_connect.php');
 
     $account_id = $_SESSION['account_id'];
@@ -24,15 +23,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $true = 1;
 
     $uploadsFileDir = '../../User/Data/ArtGallery_Uploaded_Img/';
+    $serverSideFileDir = '../User/Data/ArtGallery_Uploaded_Img/';
+
     if (!is_dir($uploadsFileDir)) {
         mkdir($uploadsFileDir, 0755, true);
     }
 
     $dest_path = $uploadsFileDir . $newFileName;
+    $file_path = $serverSideFileDir . $newFileName;
     if (move_uploaded_file($fileTmpPath, $dest_path)) {
         $query = "INSERT INTO user_post (account_id, post_date, post_content, post_chanel, photo_path) VALUES (?,?,?,?,?)";
         $stmt = mysqli_prepare($conn_contents, $query);
-        mysqli_stmt_bind_param($stmt, 'issss', $account_id, $date, $postContent, $chanel, $dest_path);
+        mysqli_stmt_bind_param($stmt, 'issss', $account_id, $date, $postContent, $chanel, $file_path);
         if (mysqli_stmt_execute($stmt)) {
         }
     }
