@@ -218,6 +218,9 @@ if (!isset($_SESSION['is_active'])) {
         $('#webPortfolio').on('click', ()=>{
             window.location.href = '../User/StudentWebPortfolio.php';
         })
+        $('#culinaryArt').on('click', ()=>{
+            window.location.href = '../User/StudentCulinaryArts.php';
+        })
     </script>
 
 </body>
