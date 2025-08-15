@@ -24,15 +24,14 @@ include('../User/Components/UserMetaData.php');
             <div class="p-1 ">
                 <button id="userDashboard" class="w-100 btn text-white text-start p-1 primary-color"><i class="bi bi-person-circle mx-2 text-white"></i>User Dashboard</button>
             </div>
-
-            <!-- <div class=" bg-light overflow-hidden shadow-sm rounded d-flex flex-column align-items-center mt-3">
-                <div id="filter_btn_container" class="p-0 w-100 primary-fs">
-                    <button value="user_management" class="p-2 bg-white w-100 rounded border text-start"><span class="primary-color p-1 me-2"></span>User Management</button>
-                    <button value="content_management" class="p-2 bg-white w-100 rounded border text-start"><span class="bg-primary p-1 me-2"></span>Content Management</button>
-                    <button value="content_approval" class="p-2 bg-white w-100 rounded border text-start"><span class="bg-success p-1 me-2"></span>Content Approval</button>
-                    <button value="content_report" class="p-2 bg-white w-100 rounded border text-start"><span class="bg-danger p-1 me-2"></span>Content Reports</button>
-                </div>  
-            </div> -->
+                <div id="webPortfolio" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-4 overflow-hidden d-flex align-items-center">
+                    <div class="primary-color p-2"><i class="bi text-white bi-file-earmark-code-fill"></i></div>
+                    <p  class="m-0 ms-2 primary-fs">Student web portfolio</p>
+                </div> 
+                <div id="culinaryArt" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-2 overflow-hidden d-flex align-items-center">
+                    <div class="primary-color p-2"><i class="bi text-white bi-egg-fried"></i></div>
+                    <p  class="m-0 ms-2 primary-fs">Student culinary art</p>
+                </div> 
             <span class="flex-grow-1"></span>
             <div>
                 <a class="mb-5 text-decoration-none w-100 yellow-color btn shadow-sm border-1 border-black" href="../Session/Logout.php">Logout</a>
@@ -49,7 +48,7 @@ include('../User/Components/UserMetaData.php');
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content  bg-light">
-                                <form method="post" action="../User/Handler/upload_picture.php" enctype="multipart/form-data">
+                                <form method="post" action="../User/Handler/ArtGal_Upload_Photo.php" enctype="multipart/form-data">
                                     <div class="modal-body d-flex flex-column">
                                         <div class="d-flex justify-content-between mb-2 p-0 align-items-center">
                                             <p class="m-0 col-4">Create a post</p>
@@ -116,7 +115,7 @@ include('../User/Components/UserMetaData.php');
                 file.append("content", content)
 
                 $.ajax({
-                    url: '../User/Handler/upload_picture.php',
+                    url: '../User/Handler/ArtGal_Upload_Photo.php',
                     type: 'POST',
                     data: file,
                     contentType: false,
@@ -125,6 +124,13 @@ include('../User/Components/UserMetaData.php');
                         window.location.reload()
                     }
                 })
+            })
+
+            $('#webPortfolio').on('click', ()=>{
+            window.location.href = '../User/StudentWebPortfolio.php';
+            })
+            $('#culinaryArt').on('click', ()=>{
+                window.location.href = '../User/StudentCulinaryArts.php';
             })
         </script>
 </body>
