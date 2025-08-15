@@ -2,10 +2,11 @@
 session_start();
 include("../../Database/db_connect.php");
 $false = 0;
+$post_chanel = 'art_gallery';
 
-$query = "SELECT * FROM user_post WHERE photo_path IS NOT NULL AND is_hidden = ? ORDER BY post_id DESC";
+$query = "SELECT * FROM user_post WHERE photo_path IS NOT NULL AND is_hidden = ? AND post_chanel = ? ORDER BY post_id DESC";
 $stmt = mysqli_prepare($conn_contents, $query);
-mysqli_stmt_bind_param($stmt, "i", $false);
+mysqli_stmt_bind_param($stmt, "is", $false, $post_chanel);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $postContent = '';
@@ -23,7 +24,7 @@ while ($row = mysqli_fetch_assoc($result)){
                 <p class="text-start m-0 primary-fs ps-1">'. $row['post_content'] .'</p>
             </div>
             <div id="img-container" data-bs-toggle="modal" data-bs-target="#view-img-modal-'. $row['post_id'] .'" class="w-100 d-flex justify-content-center">
-                <img id="img-preview" src="'. $row['photo_path'] .'" class="w-100 h-100" style="object-fit: cover; object-position: center center; max-height: 30vh; cursor: pointer; " />
+                <img loading="lazy" id="img-preview" src="'. $row['photo_path'] .'" class="w-100 h-100" style="object-fit: cover; object-position: center center; max-height: 30vh; cursor: pointer; " />
             </div>
         </div>
         <div id="PostCard_ActionBar" class="rounded bg-white d-flex justify-content-between p-2">
@@ -43,7 +44,7 @@ while ($row = mysqli_fetch_assoc($result)){
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div >
-                    <img style="max-width: 90vw; max-height: 90vh" src="'.$row['photo_path'].'" />
+                    <img loading="lazy" style="max-width: 90vw; max-height: 90vh" src="'.$row['photo_path'].'" />
                 </div>
             </div>
         </div>
