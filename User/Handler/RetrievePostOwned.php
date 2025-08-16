@@ -1,5 +1,5 @@
 <?php 
- 
+include("../../User/Handler/Post_Data_Retriever.php");
 require '../../Database/db_connect.php';
 session_start();
 
@@ -25,29 +25,48 @@ while ($row = mysqli_fetch_assoc($result)) {
         case 'random_message':
             $postColor = '#38b6ff';
             $textColor = '#f1f1f1ff';
+            $chanel = '#Random-Message';
             break;
         case 'rants':
             $postColor = '#ffc107';
             $textColor = '#1b1b1bff';
-
+            $chanel = '#Rants';
             break;
         case 'confession':
             $postColor = '#dc3545';
             $textColor = '#f1f1f1ff';
+            $chanel = '#Confession';
             break;
         case 'questions':
             $postColor = '#0d6efd';
             $textColor = '#f1f1f1ff';
+            $chanel = '#Questions';
             break;
         case 'lf_classmates':
             $postColor = '#198754';
             $textColor = '#f1f1f1ff';
+            $chanel = '#Looking-For';
             break;
         case 'lost_and_found':
             $postColor = '#212529';
             $textColor = '#f1f1f1ff';
+            $chanel = '#Lost-And-Found';
             break;
-        
+        case 'Programming_App':
+            $postColor = '#e8e100ff';
+            $textColor = '#0a0a0aff';
+            $chanel = '#Programming-App';
+            break;
+        case 'art_gallery':
+            $postColor = '#e8e100ff';
+            $textColor = '#0a0a0aff';
+            $chanel = '#Art-Gallery';
+            break;
+        case 'culinary_art':
+            $postColor = '#e8e100ff';
+            $textColor = '#0a0a0aff';
+            $chanel = '#Culinary-Art';
+            break;
         default:
             $postColor = '#38b6ff';
             $textColor = '#f1f1f1ff';
@@ -80,8 +99,12 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
         </div>
 
-        <div id="PostCard_Body" class="text-white p-5" style="background-color: ' . $postColor . '">
-            <p class="text-center my-5" style="color: ' . $textColor . '">' . $row['post_content'] . '</p>
+        <div id="PostCard_Body" style="background-color: ' . $postColor . '">
+            <p class="text-start m-2 mb-0" style="font-size:12px; color:'. $textColor .'">'. $chanel .'</p>
+            <div class="p-5">
+                
+                <p class="text-center mb-5 mt-3" style="color: ' . $textColor . '">' . nl2br($row['post_content']) . '</p>
+            </div>
         </div>
 
         <div id="PostCard_ActionBar" class="rounded bg-white d-flex justify-content-between p-2">';
@@ -133,68 +156,6 @@ echo json_encode([
     'html' => $htmlContent,
     'count' => $rowCount
 ]);
-
-function getPostCommentCount($post_id) {
-    require '../../Database/db_connect.php';
-    $query = 'SELECT COUNT(*) AS total_comment FROM comment_post WHERE post_id = ?';
-    $stmt = mysqli_prepare($conn_contents, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $post_id);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $comment_post);
-    mysqli_stmt_fetch($stmt);
-    return $comment_post;
-}
-
-function getPostReplyCount($post_id) {
-    require '../../Database/db_connect.php';
-    $query = 'SELECT COUNT(*) AS total_reply FROM reply_comment_post WHERE post_id = ?';
-    $stmt = mysqli_prepare($conn_contents, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $post_id);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $total_reply);
-    mysqli_stmt_fetch($stmt);
-    return $total_reply;
-}
-
-function getUserDisplayName($account_id){
-    require '../../Database/db_connect.php';
-    $query = 'SELECT display_name FROM accounts WHERE account_id = ?';
-    $stmt = mysqli_prepare($conn_accounts, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $account_id);
-    mysqli_execute($stmt);
-    $posterDisplayName = 'unknown';
-
-    $result = mysqli_stmt_get_result($stmt);
-    if ($row = mysqli_fetch_assoc($result)) {
-        $posterDisplayName = $row['display_name'];
-    }
-
-    return $posterDisplayName;
-}
-
-function getPostLike($post_id) {
-    require '../../Database/db_connect.php';
-    $query = 'SELECT COUNT(*) AS total_likes FROM like_post WHERE post_id = ?';
-    $stmt = mysqli_prepare($conn_contents, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $post_id);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $total_likes);
-    mysqli_stmt_fetch($stmt);
-    return $total_likes;
-}
-
-function checkUserLikePost($post_id, $account_id) {
-    require '../../Database/db_connect.php';
-    $query = 'SELECT like_id FROM like_post WHERE account_id = ? AND post_id = ?';
-    $stmt = mysqli_prepare($conn_contents, $query);
-    mysqli_stmt_bind_param($stmt, 'ii', $account_id, $post_id);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    if ($row = mysqli_fetch_assoc($result)) {
-        return true;
-    }
-    return false;
-}
 
 ?>
 
