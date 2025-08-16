@@ -5,7 +5,7 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-                $('#post_container').html(response.post);
+                $('#response').html(response.post);
             },
             error: function(xhr, status, error) {
                 console.error('Error fetching posts:', error);
