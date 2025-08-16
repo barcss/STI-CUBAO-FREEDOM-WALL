@@ -26,7 +26,7 @@ $Fullname = $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
                 <div class="p-2 d-flex flex-column vh-100">
                 <div class="d-flex align-content-center align-items-center p-0 mb-3">
                     <p class="m-0 primary-text poppins-medium fw-bold">STI CUBAO FREEDOM WALL </p>
-                    <small class="fw-bold opacity-50 ms-2 m-0 fst-italic text-dark" style="font-size: 7px;">Alpha v.3.4</small>
+                    <small class="fw-bold opacity-50 ms-2 m-0 fst-italic text-dark" style="font-size: 7px;">v.2</small>
                 </div>
 
                 <div id="profile" style="cursor: pointer;" class="bg-light shadow-sm rounded overflow-hidden d-flex align-items-center">
@@ -89,7 +89,6 @@ $Fullname = $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
                     <div class="tab_content p-1 px-2 primary-color" ><i class="tab_content bi bi-file-post-fill text-white"></i></div>
                     <div class="public_chat p-1 px-2 primary-color" ><i class="bi bi-bell-fill text-white"></i></div>
                     <div class="tab_menu primary-color px-2 p-1"><i class="bi bi-person-square text-white"></i></div>
-
                 </div>
             </div>  
             <div class="bg-light rounded-2 shadow-sm border primary-fs col-12 col-sm-9 p-0 mt-2 d-flex border border-info">
