@@ -25,10 +25,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         <div id="PostCard_Body">
             <div class="p-1 bg-white border shadow-sm">
-                <p class="text-start m-0 primary-fs ps-1">' . $row['post_content'] . '</p>
+                <p class="text-start m-0 primary-fs ps-1">' . nl2br($row['post_content']) . '</p>
             </div>
             <div id="img-container" data-bs-toggle="modal" data-bs-target="#view-img-modal-' . $row['post_id'] . '" class="w-100 d-flex justify-content-center">
-                <img loading="lazy" id="img-preview" src="' . $row['photo_path'] . '" class="w-100 h-100" style="object-fit: cover; object-position: center center; max-height: 30vh; cursor: pointer; " />
+                <img loading="lazy" id="img-preview" src="' . $row['photo_path'] . '" style="  max-height: 30vh; cursor: pointer; " />
             </div>
         </div>
         <div id="PostCard_ActionBar" class="rounded bg-white d-flex justify-content-between p-2">';
