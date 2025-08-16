@@ -35,13 +35,17 @@ include('../User/Components/UserMetaData.php');
                 <div >
                     <button id="userDashboard" class="w-100 btn text-white text-start p-1 primary-color"><i class="bi bi-person-circle mx-2 text-white"></i>User Dashboard</button>
                 </div>
-                <div id="culinaryArt" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-4 overflow-hidden d-flex align-items-center">
+                <div id="webPortfolio" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-4 overflow-hidden d-flex align-items-center">
                     <div class="primary-color p-2"><i class="bi text-white bi-file-earmark-code-fill"></i></div>
-                    <p class="m-0 ms-2 primary-fs">Student culinary art</p>
+                    <p class="m-0 ms-2 primary-fs">Student programming app</p>
                 </div>
                 <div id="artGallery" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-2 overflow-hidden d-flex align-items-center">
                     <div class="primary-color p-2"><i class="bi text-white bi-brush-fill"></i></div>
                     <p class="m-0 ms-2 primary-fs">Student art gallery</p>
+                </div>
+                <div id="culinaryArt" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-2 overflow-hidden d-flex align-items-center">
+                    <div class="primary-color p-2"><i class="bi text-white bi-egg-fried"></i></div>
+                    <p class="m-0 ms-2 primary-fs">Student culinary art</p>
                 </div>
                 <span class="flex-grow-1"></span>
                 <div>
@@ -64,7 +68,7 @@ include('../User/Components/UserMetaData.php');
 
             <div class="bg-white rounded-2 shadow-sm border primary-fs col-12 col-sm-9 p-0 mt-2 d-flex border border-info">
                 <button type="button" class="btn w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Share art works
+                    Share programming apps
                 </button>
 
                 <form id="upload_photo_form" action="#" method="POST">
@@ -95,7 +99,11 @@ include('../User/Components/UserMetaData.php');
                     </div>
                 </form>
             </div>
-            <div id="response" class="d-flex flex-column w-100"></div>
+            <div id="response" class="d-flex flex-column w-100">
+                <div id="loading" style="display: none; text-align: center;" class="d-flex justify-content-center ">
+                    <p>Loading more post</p>
+                </div>
+            </div>
         </div>
 
         <!-- THIRD COL -->
@@ -131,7 +139,7 @@ include('../User/Components/UserMetaData.php');
         <script src="../Admin/Function/ContainerContentChanger.js"></script>
         <script src="../Admin/Function/FetchUsers.js"></script>
         <script src="../Admin/Function/ViewUserProfile.js"></script>
-        <script src="../User/Function/CulArt_Retrieve_Post.js"></script>
+        <script src="../User/Function/PrgApp_Retrieve_Post.js"></script>
         <script src="../User/Function/Dashboard_ReplyComment.js"></script>
         <script src="../User/Function/Dashboard_Retrieve_Comments.js"></script>
         <script src="../User/Function/Dashboard_LikePost.js"></script>
@@ -164,14 +172,14 @@ include('../User/Components/UserMetaData.php');
                 let content = $('textarea[name="post_content"]').val();
 
                 if (!img || img.size === 0) {
-                    alert("ADD IMAGE BRO")
+                    alert("No image found")
                     return;
                 }
 
                 file.append("content", content)
 
                 $.ajax({
-                    url: '../User/Handler/CulArt_Upload_Photo.php',
+                    url: '../User/Handler/PrgApp_Upload_Photo.php',
                     type: 'POST',
                     data: file,
                     contentType: false,
@@ -182,11 +190,14 @@ include('../User/Components/UserMetaData.php');
                 })
             })
 
-            $('#artGallery').on('click', () => {
-                window.location.href = '../User/StudentArtGallery.php';
+            $('#webPortfolio').on('click', () => {
+                window.location.href = '../User/StudentProgramming.php';
             })
             $('#culinaryArt').on('click', () => {
                 window.location.href = '../User/StudentCulinaryArts.php';
+            })
+            $('#artGallery').on('click', () => {
+                window.location.href = '../User/StudentArtGallery.php';
             })
         </script>
 </body>
