@@ -15,31 +15,55 @@ include('../User/Components/UserMetaData.php');
 
 <body class="poppins-regular">
     <div class="container-fluid vh-100 d-flex p-0 m-0 row">
+        <div id="col1" class="col-0 col-lg-3 d-none d-lg-flex flex-column bg-white p-0 overflow-scroll">
+            <div style="backdrop-filter: blur(100px); background: rgba(255, 255, 255, 0.7);" class="d-block d-lg-none  border-bottom border-dark-subtle w-100 sticky-top  d-flex justify-content-between align-items-center m-0">
+                <div>
+                    <p class="poopins-medium text-dark fw-bold m-0 ms-3">SCFW</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <div class="tab_content p-1 px-2 primary-color" ><i class="tab_content bi bi-file-post-fill text-white"></i></div>
+                    <div class="public_chat p-1 px-2 primary-color" ><i class="bi bi-bell-fill text-white"></i></div>
+                    <div class="tab_menu primary-color px-2 p-1"><i class="bi bi-list text-white"></i></div>
+                </div>
+            </div>
 
-        <div class="col-0 col-lg-3 d-none d-lg-flex flex-column bg-white p-2 overflow-scroll">
-            <div class="d-flex align-content-center align-items-center p-0 mb-3">
-                <p class="m-0 primary-text poppins-medium fw-bold">STI CUBAO FREEDOM WALL</p>
-                <small class="fw-bold opacity-50 ms-2 m-0 fst-italic text-dark" style="font-size: 7px;">Beta v.2.3</small>
-            </div>
-            <div class="p-1 ">
-                <button id="userDashboard" class="w-100 btn text-white text-start p-1 primary-color"><i class="bi bi-person-circle mx-2 text-white"></i>User Dashboard</button>
-            </div>
+            <div class="d-flex flex-column vh-100 p-2">
+                <div class="d-flex align-content-center align-items-center p-0 mb-3">
+                    <p class="m-0 primary-text poppins-medium fw-bold">STI CUBAO FREEDOM WALL</p>
+                    <small class="fw-bold opacity-50 ms-2 m-0 fst-italic text-dark" style="font-size: 7px;">v.2</small>
+                    
+                </div>
+                <div>
+                    <button id="userDashboard" class="w-100 btn text-white text-start p-1 primary-color"><i class="bi bi-person-circle mx-2 text-white"></i>User Dashboard</button>
+                </div>
                 <div id="webPortfolio" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-4 overflow-hidden d-flex align-items-center">
                     <div class="primary-color p-2"><i class="bi text-white bi-file-earmark-code-fill"></i></div>
-                    <p  class="m-0 ms-2 primary-fs">Student web portfolio</p>
-                </div> 
+                    <p class="m-0 ms-2 primary-fs">Student programming app</p>
+                </div>
                 <div id="culinaryArt" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-2 overflow-hidden d-flex align-items-center">
                     <div class="primary-color p-2"><i class="bi text-white bi-egg-fried"></i></div>
-                    <p  class="m-0 ms-2 primary-fs">Student culinary art</p>
-                </div> 
-            <span class="flex-grow-1"></span>
-            <div>
-                <a class="mb-5 text-decoration-none w-100 yellow-color btn shadow-sm border-1 border-black" href="../Session/Logout.php">Logout</a>
+                    <p class="m-0 ms-2 primary-fs">Student culinary art</p>
+                </div>
+                <span class="flex-grow-1"></span>
+                <div>
+                    <a class="mb-5 text-decoration-none w-100 yellow-color btn shadow-sm border-1 border-black" href="../Session/Logout.php">Logout</a>
+                </div>
             </div>
         </div>
 
-        <div class="col-lg-6 col-12 bg-light p-3 d-flex  m-0 align-items-center flex-column overflow-scroll vh-100" id="content_container">
-            <div class="bg-white     rounded-2 shadow-sm border primary-fs col-12 col-sm-9 p-0 mt-2 d-flex border border-info">
+        <div class="col2 col-lg-6 col-12 bg-light d-flex p-0 m-0 align-items-center flex-column overflow-scroll vh-100">
+            <div style="backdrop-filter: blur(100px); background: rgba(255, 255, 255, 0.7);" class="d-block d-lg-none  border-bottom border-dark-subtle w-100 sticky-top  d-flex justify-content-between align-items-center m-0">
+                <div>
+                    <p class="poopins-medium text-dark fw-bold m-0 ms-3">SCFW</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <div class="tab_content p-1 px-2 primary-color" ><i class="tab_content bi bi-file-post-fill text-white"></i></div>
+                    <div class="public_chat p-1 px-2 primary-color" ><i class="bi bi-bell-fill text-white"></i></div>
+                    <div class="tab_menu primary-color px-2 p-1"><i class="bi bi-list text-white"></i></div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2 shadow-sm border primary-fs col-12 col-sm-9 p-0 mt-2 d-flex border border-info">
                 <button type="button" class="btn w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Share art works
                 </button>
@@ -72,15 +96,50 @@ include('../User/Components/UserMetaData.php');
                     </div>
                 </form>
             </div>
-            <div id="post_container" class="d-flex flex-column w-100"></div>
+
+            <div id="response" class="d-flex flex-column w-100"></div>
         </div>
+
+        <!-- THIRD COL -->
+        <div id="col3" class="col-12 d-none col-lg-3 d-lg-block overflow-scroll bg-white m-0 p-0">
+           <!-- <textarea id="comment-box" placeholder="Type @..."></textarea> -->
+            <div class="bg-white d-flex flex-column align-items-center vh-100">
+
+             <div style="backdrop-filter: blur(100px); background: rgba(255, 255, 255, 0.7);" class="d-block d-lg-none  border-bottom border-dark-subtle w-100 sticky-top  d-flex justify-content-between align-items-center m-0">
+                <div>
+                    <p class="poopins-medium text-dark fw-bold m-0 ms-3">SCFW</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <div class="tab_content p-1 px-2 primary-color" ><i class="tab_content bi bi-file-post-fill text-white"></i></div>
+                    <div class="public_chat p-1 px-2 primary-color" ><i class="bi bi-bell-fill text-white"></i></div>
+                    <div class="tab_menu primary-color px-2 p-1"><i class="bi bi-list text-white"></i></div>
+                </div>
+            </div>  
+                <div id="Notification" class="primary-color w-100">
+                    <p class="text-center text-white m-0">Notification</p>
+                </div>
+
+                <div id="Notification_body" class="bg-white d-flex flex-column  overflow-scroll h-100 flex-grow-1 p-2 w-100 gap-3">
+                    <div id="Notification_container d-flex flex-column">
+                        <?php include('../User/Handler/RetrieveNotification.php')?>
+                      
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
         <script src="../Admin/Function/ContainerContentChanger.js"></script>
         <script src="../Admin/Function/FetchUsers.js"></script>
         <script src="../Admin/Function/ViewUserProfile.js"></script>
         <script src="../User/Function/ArtGal_Retrieve_Post.js"></script>
-
+        <script src="../User/Function/Dashboard_ReplyComment.js"></script>
+        <script src="../User/Function/Dashboard_Retrieve_Comments.js"></script>
+        <script src="../User/Function/Dashboard_LikePost.js"></script>
+        <script src="../User/Function/Dashboard_MentionUser.js"></script>
+        <script src="../User/Function/Dashboard_Header.js"></script>
         <script>
             $('#userDashboard').on('click', () => {
                 window.location.href = "../User/UserDashboard.php"
@@ -126,13 +185,15 @@ include('../User/Components/UserMetaData.php');
                 })
             })
 
-            $('#webPortfolio').on('click', ()=>{
-            window.location.href = '../User/StudentWebPortfolio.php';
+            $('#webPortfolio').on('click', () => {
+                window.location.href = '../User/StudentProgramming.php';
             })
-            $('#culinaryArt').on('click', ()=>{
+            $('#culinaryArt').on('click', () => {
                 window.location.href = '../User/StudentCulinaryArts.php';
             })
         </script>
+
+
 </body>
 
 </html>
