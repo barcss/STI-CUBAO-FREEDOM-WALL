@@ -52,7 +52,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $textColor = '#f1f1f1ff';
             $chanel = '#Lost-And-Found';
             break;
-        case 'Programming_App':
+        case 'Programming_app':
             $postColor = '#e8e100ff';
             $textColor = '#0a0a0aff';
             $chanel = '#Programming-App';
