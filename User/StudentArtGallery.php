@@ -40,6 +40,10 @@ include('../User/Components/UserMetaData.php');
                     <div class="primary-color p-2"><i class="bi text-white bi-file-earmark-code-fill"></i></div>
                     <p class="m-0 ms-2 primary-fs">Student programming app</p>
                 </div>
+                <div id="artGallery" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-2 overflow-hidden d-flex align-items-center">
+                    <div class="primary-color p-2"><i class="bi text-white bi-brush-fill"></i></div>
+                    <p class="m-0 ms-2 primary-fs">Student art gallery</p>
+                </div>
                 <div id="culinaryArt" style="cursor: pointer;" class="bg-light shadow-sm rounded mt-2 overflow-hidden d-flex align-items-center">
                     <div class="primary-color p-2"><i class="bi text-white bi-egg-fried"></i></div>
                     <p class="m-0 ms-2 primary-fs">Student culinary art</p>
@@ -122,7 +126,6 @@ include('../User/Components/UserMetaData.php');
                 <div id="Notification_body" class="bg-white d-flex flex-column  overflow-scroll h-100 flex-grow-1 p-2 w-100 gap-3">
                     <div id="Notification_container d-flex flex-column">
                         <?php include('../User/Handler/RetrieveNotification.php')?>
-                      
                     </div>
                     
                 </div>
@@ -167,7 +170,7 @@ include('../User/Components/UserMetaData.php');
                 let content = $('textarea[name="post_content"]').val();
 
                 if (!img || img.size === 0) {
-                    alert("ADD IMAGE BRO")
+                    alert("No image found")
                     return;
                 }
 
@@ -190,6 +193,9 @@ include('../User/Components/UserMetaData.php');
             })
             $('#culinaryArt').on('click', () => {
                 window.location.href = '../User/StudentCulinaryArts.php';
+            })
+            $('#artGallery').on('click', () => {
+                window.location.href = '../User/StudentArtGallery.php';
             })
         </script>
 
