@@ -101,7 +101,7 @@ include('../User/Components/UserMetaData.php');
             </div>
             <div id="response" class="d-flex flex-column w-100">
                 <div id="loading" style="display: none; text-align: center;" class="d-flex justify-content-center ">
-                    <p>Loading more post</p>
+                    <p>Loading</p>
                 </div>
             </div>
         </div>

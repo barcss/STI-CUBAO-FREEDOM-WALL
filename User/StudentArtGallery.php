@@ -101,7 +101,11 @@ include('../User/Components/UserMetaData.php');
                 </form>
             </div>
 
-            <div id="response" class="d-flex flex-column w-100"></div>
+            <div id="response" class="d-flex flex-column w-100">
+                <div id="loading" style="display: none; text-align: center;" class="d-flex justify-content-center ">
+                    <p>Loading</p>
+                </div>
+            </div>
         </div>
 
         <!-- THIRD COL -->
