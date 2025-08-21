@@ -1,5 +1,6 @@
 <?php
 include('../../Database/db_connect.php');
+include('../../Session/AdminSessionChecker.php');
 
 $query = "SELECT * FROM accounts";
 $stmt = mysqli_prepare($conn_accounts, $query);

@@ -1,5 +1,7 @@
 <?php
 include('../../Database/db_connect.php');
+include('../../Session/AdminSessionChecker.php');
+
 $user_id = $_GET['user_id'];
 
 $query = "SELECT account.*, COUNT(user_post.post_id) AS total_post FROM user_accounts.accounts as account 

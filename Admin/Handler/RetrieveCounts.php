@@ -1,6 +1,6 @@
 <?php
 include('../Database/db_connect.php');
-
+include('../Session/AdminSessionChecker.php');
 function getTotalUser(){
     include('../Database/db_connect.php');
 
