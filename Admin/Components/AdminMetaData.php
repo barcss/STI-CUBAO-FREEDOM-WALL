@@ -5,6 +5,7 @@ if ((bool)$_SESSION['is_admin'] != true) {
     header("Location: ../");
     return;
     exit;
+    die;
 }
 ?>
 
