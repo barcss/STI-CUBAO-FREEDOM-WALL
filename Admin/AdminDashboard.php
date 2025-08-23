@@ -31,6 +31,7 @@ include('../Admin/Handler/RetrieveCounts.php');
         <div class="col p-0 bg-light p-3 d-flex container m-0 row align-items-center flex-column overflow-scroll vh-100" id="content_container">
             <?php include '../Admin/Components/DashboardTotalCounts.php' ?>
             <?php include '../Admin/Components/UserManagement.php' ?>
+            <?php include '../Admin/Components/ContentManagement.php' ?>
         </div> 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -38,6 +39,11 @@ include('../Admin/Handler/RetrieveCounts.php');
     <script src="../Admin/Function/ContainerContentChanger.js"></script>
     <script src="../Admin/Function/FetchUsers.js"></script>
     <script src="../Admin/Function/ViewUserProfile.js"></script>
+    <script src="../Admin/Function/MuteUser.js"></script>
+    <script src="../Admin/Function/ContentManagement_Delete_Post.js"></script>
+    <script src="../Admin/Function/ContentManagement_Retrieve_Post.js"></script>
+    <script src="../Admin/Function/ContentManagement_Show_Post.js"></script>
+
 
     <script>
         $('#userDashboard').on('click', ()=>{
