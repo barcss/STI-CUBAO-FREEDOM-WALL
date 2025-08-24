@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 if ((bool) $_SESSION['is_admin'] !== true) {
     echo '😂😂😂😂';
     die();
