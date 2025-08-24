@@ -19,7 +19,7 @@ if (!isset($_SESSION['is_active'])) {
     <div class="container-fluid row m-0 p-0">
 
         <!-- FIRST COL -->
-        <div id="col1" class="col-sm-12 d-none col-lg-3 d-lg-block bg-white m-0 p-0 vh-100 ">
+        <div id="col1" class="col-sm-12 d-none col-lg-3 d-lg-block bg-white m-0 p-0" style="height: 100vh; height: 100dvh">
             <div class=" d-flex flex-column vh-100">
 
                 <div style="backdrop-filter: blur(100px); background: rgba(255, 255, 255, 0.7);" class="d-block d-lg-none  border-bottom border-dark-subtle w-100 sticky-top  d-flex justify-content-between align-items-center m-0">
@@ -97,7 +97,7 @@ if (!isset($_SESSION['is_active'])) {
         </div>
 
         <!-- SECOND COL -->
-        <div id="MainBody" class="col2 col-12 col-lg-6 d-block d-flex p-0 flex-column align-items-center bg-light vh-100 overflow-scroll m-0">
+        <div id="MainBody" class="col2 col-12 col-lg-6 d-block d-flex p-0 flex-column align-items-center bg-light overflow-scroll m-0" style="height: 100vh; height: 100dvh">
             <div style="backdrop-filter: blur(100px); background: rgba(255, 255, 255, 0.7);" class="d-block d-lg-none  border-bottom border-dark-subtle w-100 sticky-top  d-flex justify-content-between align-items-center m-0">
                 <div>
                     <p class="poopins-medium text-dark fw-bold m-0 ms-3">SCFW</p>
@@ -150,7 +150,7 @@ if (!isset($_SESSION['is_active'])) {
         </div>
 
         <!-- THIRD COL -->
-        <div id="col3" class="col-12 d-none col-lg-3 d-lg-block overflow-scroll m-0 p-0">
+        <div id="col3" class="col-12 d-none col-lg-3 d-lg-block overflow-scroll m-0 p-0" style="height: 100vh; height: 100dvh"  >
             <!-- <textarea id="comment-box" placeholder="Type @..."></textarea> -->
             <div class="bg-white d-flex flex-column  bg-light align-items-center vh-100">
 
@@ -162,9 +162,9 @@ if (!isset($_SESSION['is_active'])) {
                         <div class="tab_content p-1 px-2 primary-color"><i class="tab_content bi bi-file-post-fill text-white"></i></div>
                         <div class="public_chat p-1 px-2 primary-color"><i class=" bi bi-chat-square-dots-fill text-white"></i></div>
                         <div class="tab_menu primary-color px-2 p-1"><i class="bi text-white bi-list"></i></div>
-
                     </div>
                 </div>
+                
                 <div id="PublicChatHeader" class="primary-color w-100">
                     <p class="text-center text-white m-0">Public Chat</p>
                 </div>
