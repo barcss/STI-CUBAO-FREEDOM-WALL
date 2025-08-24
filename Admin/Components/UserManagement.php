@@ -3,8 +3,8 @@ $Fullname = $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
 ?>
 
 <div id="user_management" class="content p-0 container d-flex row">
-    <div class="col-8 d-flex flex-column container">
-        <div class="d-flex container w-100 p-0">
+    <div class="col-lg-8 col-12 d-flex flex-column container">
+        <!-- <div class="d-flex container w-100 p-0">
             <form action="#" class="w-100 d-flex m-0">
                 <input type="text" placeholder="search user" class="flex-grow-1">
                 <select class=" me-3">
@@ -13,7 +13,7 @@ $Fullname = $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
                 </select>
                 <button class="btn btn-success text-white">Search</button>
             </form>
-        </div>
+        </div> -->  
         <div class="d-flex flex-column bg-white p-3 rounded-1 shadow-sm mt-2">
             <div class="d-flex">
                 <p class="p-0 m-0">Users</p>
