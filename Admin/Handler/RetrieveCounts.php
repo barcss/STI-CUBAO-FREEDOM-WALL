@@ -44,7 +44,7 @@ function getTotalMuted(){
 function getTotalPost(){
     include('../Database/db_connect.php');
 
-    $query = 'SELECT COUNT(*) AS totalPost FROM user_post';
+    $query = 'SELECT COUNT(DISTINCT post_id) AS totalPost FROM user_post';
     $stmt = mysqli_prepare($conn_contents, $query);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_bind_result($stmt, $totalPost);
