@@ -36,3 +36,7 @@ id: c8
 22-8-25
 Reason: Late nakauwi Busy
 id: c9
+
+27-8-25
+Reason: REVIEWING FOR PRELIMS AND DOING SIDE QUEST
+id: c10
