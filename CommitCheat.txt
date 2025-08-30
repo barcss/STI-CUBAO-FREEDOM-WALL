@@ -52,3 +52,7 @@ id: c12
 28-8-25
 Reason: PRELIMS
 id: c13
+
+30-8-25
+Reason: Stranded pagod
+id: c14
